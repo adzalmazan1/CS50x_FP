@@ -1,11 +1,11 @@
-import { tokenCache } from '@clerk/clerk-expo/token-cache'
-import { Slot } from "expo-router";
-import SafeScreen from "@/components/SafeScreen";
+import SafeScreen from "@/components/SafeScreen"; // created comp
+
 import { ClerkProvider } from "@clerk/clerk-expo";
+import { Slot } from "expo-router";
+import { tokenCache } from '@clerk/clerk-expo/token-cache'
 
 // ClerkProvidercomponent provides session and user context to Clerk's hooks and components
 // wrap your entire app at the entry point with ClerkProvider to make authentication globally accessible
-// root layout
 export default function RootLayout() {
   return (
     /*

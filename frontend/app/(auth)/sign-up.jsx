@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useSignUp } from '@clerk/clerk-expo';
-import { useRouter } from 'expo-router';
-import { styles } from "@/assets/styles/auth.styles.js";
-import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/color.js";
 import { Image } from "expo-image";
+import { Ionicons } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
+import { styles } from "@/assets/styles/auth.styles.js";
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { useSignUp } from '@clerk/clerk-expo';
+import { useState } from 'react';
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp()
@@ -65,7 +65,8 @@ export default function SignUpScreen() {
     } catch (err) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
+      // console.error(JSON.stringify(err, null, 2))
+      setError(err.errors?.[0]?.longMessage);
     }
   }
 
@@ -116,7 +117,7 @@ export default function SignUpScreen() {
         {/* Note on single and double brace usage for jsx */}
 
         {/* Image on top of */}
-        <Image source={require("../../assets/images/waterDispenserJug.png")} style={styles.illustration}></Image>
+        <Image source={require("../../assets/images/waterDispenserBottle.png")} style={styles.illustration}></Image>
         <Text style={styles.title}>Create Account</Text>
 
         {/* Add error checker here */}
@@ -163,6 +164,3 @@ export default function SignUpScreen() {
     </KeyboardAwareScrollView>
   )
 }
-
-// router from expo
-// takes you <-- back

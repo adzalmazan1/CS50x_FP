@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { useSignIn } from '@clerk/clerk-expo'
-import { Link, useRouter } from 'expo-router'
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { styles } from "@/assets/styles/auth.styles.js";
+import { COLORS } from "@/constants/color.js";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
-import { COLORS } from "@/constants/color.js";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Link, useRouter } from 'expo-router';
+import { styles } from "@/assets/styles/auth.styles.js";
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useSignIn } from '@clerk/clerk-expo';
+import { useState } from 'react';
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn()
@@ -15,7 +15,7 @@ export default function Page() {
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
   
-  // additional state: Error state
+  // additional state: for handling Error states
   const[error, setError] = useState('')
 
   // Handle the submission of the sign-in form
@@ -74,7 +74,7 @@ export default function Page() {
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Enter email"
-          placeholderTextColor="#9a8478"
+          placeholderTextColor="#9A8478"
           onChangeText={(email) => setEmailAddress(email)}
         />
 
@@ -82,7 +82,7 @@ export default function Page() {
           style={[styles.input, error && styles.errorInput]}
           value={password}
           placeholder="Enter password"
-          placeholderTextColor="#9a8478"
+          placeholderTextColor="#9A8478"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
